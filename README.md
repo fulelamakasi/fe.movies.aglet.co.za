@@ -85,10 +85,3 @@ cp -r build/* public/
 All requests include the `User-Id` header (app token or user token after login).
 
 ---
-
-## Design
-
-- **Theme**: Cinematic dark UI inspired by streaming platforms
-- **Fonts**: Bebas Neue (display/headings) + DM Sans (body)
-- **Colors**: Deep navy blacks, Netflix-red accent (#e50914), IMDB-gold for ratings
-- **Layout**: Fixed sidebar navigation + scrollable main content area
