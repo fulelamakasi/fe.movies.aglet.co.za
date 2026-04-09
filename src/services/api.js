@@ -1,6 +1,8 @@
 const API_BASE = process.env.REACT_APP_API_BASE_URL || 'http://127.0.0.1:5000/api';
 const APP_USER_ID = process.env.REACT_APP_USER_ID || '10235463-8728-0913-9837-127634524310';
 
+export { APP_USER_ID };
+
 function getUserId() {
   const token = localStorage.getItem('userToken');
   return token || APP_USER_ID;
@@ -118,6 +120,18 @@ export const userRoleService = {
   getByRole: (roleId) => apiRequest(`/user_roles/get-by-role/v1/${roleId}`),
 };
 
+// ─── Movie Favourites ───
+export const movieFavouriteService = {
+  getAll: () => apiRequest('/movie_favourites/v1'),
+  getById: (id) => apiRequest(`/movie_favourites/v1/${id}`),
+  create: (data) => apiRequest('/movie_favourites/v1', { method: 'POST', body: data }),
+  update: (id, data) => apiRequest(`/movie_favourites/v1/${id}`, { method: 'PUT', body: data }),
+  delete: (id) => apiRequest(`/movie_favourites/v1/${id}`, { method: 'DELETE' }),
+  getActive: (isActive) => apiRequest(`/movie_favourites/get-active/v1/${isActive}`),
+  getByUser: (userId) => apiRequest(`/movie_favourites/get-by-user/v1/${userId}`),
+  getByMovie: (movieId) => apiRequest(`/movie_favourites/get-by-movie/v1/${movieId}`),
+};
+
 // ─── Users ───
 export const userService = {
   getAll: () => apiRequest('/users/v1'),
@@ -126,4 +140,5 @@ export const userService = {
   update: (id, data) => apiRequest(`/users/v1/${id}`, { method: 'PUT', body: data }),
   delete: (id) => apiRequest(`/users/v1/${id}`, { method: 'DELETE' }),
   getActive: (isActive) => apiRequest(`/users/get-active/v1/${isActive}`),
+  getByToken: (token) => apiRequest(`/users/get-by-token/v1/${token}`),
 };

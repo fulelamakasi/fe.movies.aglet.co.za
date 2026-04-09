@@ -15,6 +15,7 @@ const mainNav = [
 
 const adminNav = [
   { to: '/admin/movies', icon: <MdDashboard />, label: 'Manage Movies' },
+  { to: '/admin/movie-favourites', icon: <MdFavorite />, label: 'Movie Favourites' },
   { to: '/admin/languages', icon: <MdLanguage />, label: 'Languages' },
   { to: '/admin/users', icon: <MdPeople />, label: 'Users' },
   { to: '/admin/roles', icon: <MdAssignment />, label: 'Roles' },

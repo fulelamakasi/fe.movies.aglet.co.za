@@ -19,6 +19,7 @@ import AdminPermissionsPage from './pages/AdminPermissionsPage';
 import AdminRolePermissionsPage from './pages/AdminRolePermissionsPage';
 import AdminUserRolesPage from './pages/AdminUserRolesPage';
 import AdminContactUsPage from './pages/AdminContactUsPage';
+import AdminMovieFavouritesPage from './pages/AdminMovieFavouritesPage';
 
 function AppLayout() {
   const location = useLocation();
@@ -39,6 +40,7 @@ function AppLayout() {
 
           {/* Admin CRUD routes */}
           <Route path="/admin/movies" element={<AdminMoviesPage />} />
+          <Route path="/admin/movie-favourites" element={<AdminMovieFavouritesPage />} />
           <Route path="/admin/languages" element={<AdminLanguagesPage />} />
           <Route path="/admin/users" element={<AdminUsersPage />} />
           <Route path="/admin/roles" element={<AdminRolesPage />} />

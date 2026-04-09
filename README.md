@@ -22,6 +22,40 @@ Full CRUD (Create, Read, Update, Delete) for every API model:
 
 ---
 
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Sidebar.js          # Navigation sidebar with brand, links, user info
+│   ├── MovieCard.js         # Movie poster card with favourite toggle
+│   ├── Modal.js             # Reusable modal dialog
+│   └── CrudPage.js          # Generic CRUD table/form component
+├── context/
+│   ├── AuthContext.js        # Auth state, login/logout, token management
+│   └── FavouritesContext.js  # Client-side favourites with localStorage
+├── pages/
+│   ├── MoviesPage.js         # Main movie browsing with 9-per-page pagination
+│   ├── FavouritesPage.js     # Favourites collection view
+│   ├── ContactPage.js        # Contact form + info
+│   ├── LoginPage.js          # Login screen
+│   ├── AdminMoviesPage.js    # CRUD: Movies
+│   ├── AdminLanguagesPage.js # CRUD: Languages
+│   ├── AdminUsersPage.js     # CRUD: Users
+│   ├── AdminRolesPage.js     # CRUD: Roles
+│   ├── AdminPermissionsPage.js       # CRUD: Permissions
+│   ├── AdminRolePermissionsPage.js   # CRUD: Role Permissions
+│   ├── AdminUserRolesPage.js         # CRUD: User Roles
+│   └── AdminContactUsPage.js         # CRUD: Contact Submissions
+├── services/
+│   └── api.js                # Centralised API client with all endpoints
+├── App.js                    # Router & layout
+├── index.js                  # Entry point
+└── index.css                 # Global styles (dark cinematic theme)
+```
+
+---
+
 ## Setup & Run
 
 ### Prerequisites
@@ -35,7 +69,7 @@ npm install
 ```
 
 ### Configure
-Copy `.env.example` to `.env` the update to match your API:
+Edit `.env` to match your API:
 
 ```env
 REACT_APP_API_BASE_URL=http://127.0.0.1:5000/api
@@ -59,13 +93,6 @@ Opens at `http://localhost:3000`.
 npm run build
 ```
 
-```bash
-rm -rf public/*
-```
-
-```bash
-cp -r build/* public/
-```
 ---
 
 ## API Endpoints Consumed
@@ -85,3 +112,10 @@ cp -r build/* public/
 All requests include the `User-Id` header (app token or user token after login).
 
 ---
+
+## Design
+
+- **Theme**: Cinematic dark UI inspired by streaming platforms
+- **Fonts**: Bebas Neue (display/headings) + DM Sans (body)
+- **Colors**: Deep navy blacks, Netflix-red accent (#e50914), IMDB-gold for ratings
+- **Layout**: Fixed sidebar navigation + scrollable main content area

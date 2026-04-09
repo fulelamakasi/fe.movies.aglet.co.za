@@ -5,7 +5,7 @@ import { useFavourites } from '../context/FavouritesContext';
 const TMDB_IMG = process.env.REACT_APP_TMDB_IMAGE_BASE_URL || 'https://image.tmdb.org/t/p/w500';
 
 export default function MovieCard({ movie }) {
-  const { addFavourite, removeFavourite, isFavourite } = useFavourites();
+  const { addFavourite, removeFavourite, isFavourite, actionLoading } = useFavourites();
   const fav = isFavourite(movie.id);
 
   const posterSrc = movie.poster_path
@@ -14,6 +14,7 @@ export default function MovieCard({ movie }) {
 
   const handleFavClick = (e) => {
     e.stopPropagation();
+    if (actionLoading) return;
     fav ? removeFavourite(movie.id) : addFavourite(movie);
   };
 
@@ -46,7 +47,9 @@ export default function MovieCard({ movie }) {
           <button
             className={`btn-favourite${fav ? ' is-favourite' : ''}`}
             onClick={handleFavClick}
+            disabled={actionLoading}
             title={fav ? 'Remove from favourites' : 'Add to favourites'}
+            style={actionLoading ? { opacity: 0.5 } : {}}
           >
             {fav ? <MdFavorite /> : <MdFavoriteBorder />}
           </button>
